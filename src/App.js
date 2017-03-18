@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import flatten from 'lodash/flatten';
 
 import TodoList from './TodoList';
+import CountDisplay from './CountDisplay';
 import './App.css';
 
 
@@ -137,6 +139,7 @@ class App extends Component {
     return (
       <div>
         <h1 className="App">Todo Lists</h1>
+        <CountDisplay todos={flatten(this.state.todoLists.map(todoList => todoList.todos))} />
         {this.renderTodoLists()}
         {this.renderAddTodoList()}
       </div>
