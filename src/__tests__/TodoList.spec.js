@@ -6,5 +6,7 @@ import TodoList from '../TodoItem';
 
 
 describe('TodoList', () => {
+  it('should render without crash', () => {
 
+  });
 });
