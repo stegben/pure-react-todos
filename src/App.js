@@ -28,17 +28,6 @@ class App extends Component {
     };
   }
 
-  changeTitle = (idx) => {
-    const { todoLists } = this.state;
-    return newTitle => {
-      const newTodoLists = todoLists.slice();
-      newTodoLists[idx].title = newTitle;
-      this.setState({
-        todoLists: newTodoLists,
-      })
-    }
-  }
-
   addTodo = (idx) => {
     const { todoLists } = this.state;
     return newTodo => {
@@ -58,6 +47,21 @@ class App extends Component {
     return idxOfTodo => {
       const newTodoLists = todoLists.slice();
       newTodoLists[idx].todos.splice(idxOfTodo, 1)
+      this.setState({
+        todoLists: newTodoLists,
+      })
+    }
+  }
+
+  checkTodo = (idx) => {
+
+  }
+
+  changeTitle = (idx) => {
+    const { todoLists } = this.state;
+    return newTitle => {
+      const newTodoLists = todoLists.slice();
+      newTodoLists[idx].title = newTitle;
       this.setState({
         todoLists: newTodoLists,
       })
