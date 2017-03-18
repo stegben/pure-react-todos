@@ -54,7 +54,15 @@ class App extends Component {
   }
 
   checkTodo = (idx) => {
-
+    const { todoLists } = this.state;
+    return idxOfTodo => {
+      const newTodoLists = todoLists.slice();
+      const origDoneState = newTodoLists[idx].todos[idxOfTodo].done
+      newTodoLists[idx].todos[idxOfTodo].done = !origDoneState;
+      this.setState({
+        todoLists: newTodoLists,
+      })
+    }
   }
 
   changeTitle = (idx) => {
@@ -80,7 +88,7 @@ class App extends Component {
                 todos={todoList.todos}
                 addTodo={this.addTodo(idx)}
                 deleteTodo={this.deleteTodo(idx)}
-                checkTodo={() => {}}
+                checkTodo={this.checkTodo(idx)}
                 changeTitle={this.changeTitle(idx)}
               />
             </div>
