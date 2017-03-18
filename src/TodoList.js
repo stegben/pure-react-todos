@@ -102,8 +102,8 @@ class TodoList extends Component {
           <TodoItem
             done={todo.done}
             content={todo.content}
-            onCheck={checkTodo(idx)}
-            onDelete={deleteTodo(idx)}
+            onCheck={() => checkTodo(idx)}
+            onDelete={() => deleteTodo(idx)}
           />
         ))}
       </ul>
