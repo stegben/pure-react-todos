@@ -83,6 +83,12 @@ class App extends Component {
         <div className="row">
           {todoLists.map((todoList, idx) => (
             <div className="col col-md-3">
+              <button
+                className="btn btn-primary btn-lg"
+                onClick={() => this.deleteTodoList(idx)}
+              >
+                <spam className="glyphicon glyphicon-remove-circle" />
+              </button>
               <TodoList
                 title={todoList.title}
                 todos={todoList.todos}
@@ -98,11 +104,41 @@ class App extends Component {
     )
   }
 
+  addTodoList = () => {
+    this.setState({
+      todoLists: [
+        ...this.state.todoLists,
+        { title: 'a new todo list', todos: [] },
+      ]
+    })
+  }
+
+  deleteTodoList = (idx) => {
+    const { todoLists } = this.state;
+    const newTodoLists = todoLists.slice();
+    newTodoLists.splice(idx, 1)
+    this.setState({
+      todoLists: newTodoLists,
+    })
+  }
+
+  renderAddTodoList = () => {
+    return (
+      <button
+        className="btn btn-primary btn-lg"
+        onClick={this.addTodoList}
+      >
+        <spam className="glyphicon glyphicon-plus" />
+      </button>
+    )
+  }
+
   render() {
     return (
       <div>
         <h1 className="App">Todo Lists</h1>
         {this.renderTodoLists()}
+        {this.renderAddTodoList()}
       </div>
     );
   }
