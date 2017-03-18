@@ -24,13 +24,13 @@ storiesOf('TodoItem', module)
       done
       content="Hey"
       onCheck={() => {}}
-      onCheck={() => {}}
+      onDelete={() => {}}
     />
     ))
     .add('not done', () => (
     <TodoItem
       content="Hey"
       onCheck={() => {}}
-      onCheck={() => {}}
+      onDelete={() => {}}
     />
     ));

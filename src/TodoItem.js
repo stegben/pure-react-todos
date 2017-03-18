@@ -18,7 +18,7 @@ class TodoItem extends Component {
         <span>{content}</span>
         <button
           className="btn btn-default btn-sm"
-          onClick={onCheck}
+          onClick={onDelete}
           style={{ float: 'right' }}
         >
           <span className={deleteButtonCN} />
