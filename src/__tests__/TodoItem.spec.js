@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import jest from 'jest';
 import { shallow } from 'enzyme';
 
 import TodoItem from '../TodoItem';
