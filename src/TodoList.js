@@ -13,6 +13,12 @@ class TodoList extends Component {
     };
   }
 
+  componentDidUpdate(prevProp, prevState) {
+    if (this.state.titleEditing) {
+      this.titleInput.focus()
+    }
+  }
+
   onChangeTodoInput = (event) => {
     this.setState({
       todoInput: event.target.value,
@@ -28,7 +34,7 @@ class TodoList extends Component {
   onStartEditingTitle = () => {
     this.setState({
       titleEditing: true,
-    })
+    });
   }
 
   handleSubmitChangeTitle = (event) => {
@@ -72,6 +78,7 @@ class TodoList extends Component {
       return (
         <div>
           <input
+            ref={(input) => { this.titleInput = input; }}
             value={titleInput}
             onChange={this.onChangeTitleInput}
             onKeyDown={this.handleSubmitChangeTitle}
