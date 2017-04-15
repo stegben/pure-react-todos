@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import flatten from 'lodash/flatten';
+import cn from 'classnames';
 
 import TodoList from './TodoList';
 import CountDisplay from './CountDisplay';
@@ -80,28 +81,33 @@ class App extends Component {
 
   renderTodoLists = () => {
     const { todoLists } = this.state;
+    const className = cn(
+      'col',
+      'col-lg-3',
+      'col-md-4',
+      'col-sm-6',
+      'col-xs-12',
+    );
     return (
-      <div className="container">
-        <div className="row">
-          {todoLists.map((todoList, idx) => (
-            <div className="col col-md-3">
-              <button
-                className="btn btn-primary btn-lg"
-                onClick={() => this.deleteTodoList(idx)}
-              >
-                <spam className="glyphicon glyphicon-remove-circle" />
-              </button>
-              <TodoList
-                title={todoList.title}
-                todos={todoList.todos}
-                addTodo={this.addTodo(idx)}
-                deleteTodo={this.deleteTodo(idx)}
-                checkTodo={this.checkTodo(idx)}
-                changeTitle={this.changeTitle(idx)}
-              />
-            </div>
-          ))}
-        </div>
+      <div className="row">
+        {todoLists.map((todoList, idx) => (
+          <div className={className}>
+            <button
+              className="btn btn-primary btn-lg"
+              onClick={() => this.deleteTodoList(idx)}
+            >
+              <spam className="glyphicon glyphicon-remove-circle" />
+            </button>
+            <TodoList
+              title={todoList.title}
+              todos={todoList.todos}
+              addTodo={this.addTodo(idx)}
+              deleteTodo={this.deleteTodo(idx)}
+              checkTodo={this.checkTodo(idx)}
+              changeTitle={this.changeTitle(idx)}
+            />
+          </div>
+        ))}
       </div>
     )
   }
@@ -137,9 +143,15 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1 className="App">Todo Lists</h1>
-        <CountDisplay todos={flatten(this.state.todoLists.map(todoList => todoList.todos))} />
+      <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div className="row">
+              <h1 className="App">Todo Lists</h1>
+            </div>
+            <CountDisplay todos={flatten(this.state.todoLists.map(todoList => todoList.todos))} />
+          </div>
+        </nav>
         {this.renderTodoLists()}
         {this.renderAddTodoList()}
       </div>
